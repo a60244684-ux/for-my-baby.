@@ -1,0 +1,223 @@
+/* General */
+body {
+  text-align: center;
+  background: #a2d4ed;
+  font-family: 'courier', monospace;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-top: 60px;
+  color: #060506;
+  z-index: 10;
+  position: relative;
+}
+
+/* Cake */
+/* Cake container centered */
+.cake-container {
+  position: absolute; /* or fixed if you want it to stay on scroll */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* perfect center */
+  width: 400px; /* adjust size as needed */
+  z-index: 5; /* on top of background but below card if needed */
+}
+
+.cake-layer {
+ height: 80px;
+  border-radius: 25px;
+  margin: 0 auto -15px auto; /* centers each layer */
+  position: relative;
+  box-shadow: inset 0 -5px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Bottom layer (biggest) */
+.layer1 {
+  width: 100%;
+  background: #ffb3cc;
+}
+
+/* Middle layer */
+.layer2 {
+  width: 75%;
+  background: #ff99bb;
+}
+
+/* Top layer (smallest) */
+.layer3 {
+  width: 50%;
+  background: #ff80aa; 
+}
+
+.layer1 { background: #ffb3cc; }
+.layer2 { background: #ff99bb; }
+.layer3 { background: #ff80aa; }
+
+/* Candles */
+  .candles {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto; /* let the candles shrink together */
+  display: flex;
+  justify-content: center; /* center them */
+  gap: 15px; /* adjust spacing between candles */
+
+}
+
+.candles .small-candle {
+  width: 7px;
+  height: 25px;
+  background: white;
+  border-radius: 3px;
+  position: relative;
+}
+
+.candles .small-candle .flame {
+  width: 10px;
+  height: 12px;
+  background: rgb(254, 203, 82);
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.2s infinite;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* Birthday Card */
+/* Front cover small */
+.birthday-card {
+  position: absolute;
+  left: 60px;
+  width: 140px;
+  height: 200px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.card-front {
+  width: 100%;
+  height: 100%;
+  background: #91aff3;
+  border-radius: 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+}
+.birthday-card::after {
+  content: "open me!";
+  position: absolute;
+  top: 100%; /* directly below the card */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px; /* space between card and text */
+  font-size: 14px;
+  color: #555;
+}
+
+/* Inner book */
+.card-book {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 800px;   /* big like A4 sheets */
+  height: 600px;  /* proportionate */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+  z-index: 50;
+  background: transparent;
+}
+
+.book-inner {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Left and right pages */
+.page {
+  width: 50%;
+  height: 100%;
+  background: rgb(154, 154, 154);
+  margin: 0 5px;
+  border-radius: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-size: 12px;  /* readable */
+  line-height: 1.5;
+}
+
+.page-number {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.balloon {
+  position: absolute;
+  bottom: 0; /* start from bottom */
+  width: 60px;   /* adjust as needed */
+  height: 60px;
+  background: rgb(238, 123, 123); /* balloon color */
+  transform: rotate(-45deg);
+}
+
+/* The two circles to form the top of the heart */
+.balloon::before,
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgb(238, 123, 123);
+  border-radius: 50%;
+}
+
+.balloon::before {
+  top: -30px;
+  left: 0;
+}
+
+.balloon::after {
+  top: 0;
+  left: 30px;
+}
+
+
+/* Rise animation */
+@keyframes rise {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 100vh;
+    opacity: 0;
+  }
+}
+.balloon {
+  position: absolute;
+  bottom: 0;
+  font-size: 50px; /* size of heart */
+  text-align: center;
+}
